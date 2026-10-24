@@ -1,0 +1,14 @@
+{
+  "info": {"name": "AI Support Agent API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "variable": [{"key": "base", "value": "http://127.0.0.1:8000"}],
+  "item": [
+    {"name": "Health", "request": {"method": "GET", "url": "{{base}}/health"}},
+    {"name": "Chat", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}],
+      "url": "{{base}}/chat",
+      "body": {"mode": "raw", "raw": "{\n  \"session_id\": \"user-123\",\n  \"message\": \"How do I return a shirt?\"\n}"}}},
+    {"name": "Voice webhook", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}],
+      "url": "{{base}}/webhook/voice",
+      "body": {"mode": "raw", "raw": "{\n  \"call_id\": \"42\",\n  \"transcript\": \"Hi, I want to know where my order is\"\n}"}}},
+    {"name": "Reset session", "request": {"method": "DELETE", "url": "{{base}}/chat/user-123"}}
+  ]
+}
